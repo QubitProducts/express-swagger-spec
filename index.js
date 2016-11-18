@@ -6,7 +6,12 @@ var methodToOpVerb = {
 }
 
 function pathToOperationID (path, method) {
-  return methodToOpVerb[method] + path.replace(':', '').split('/').filter(Boolean).map(w => `${w.charAt(0).toUpperCase()}${w.substr(1)}`).join('')
+  var resourceName = path.replace(':', '').split('/').filter(Boolean).map(w => `${w.charAt(0).toUpperCase()}${w.substr(1)}`).join('')
+  if (path === '/') {
+    resourceName = 'index'
+  }
+  var verb = methodToOpVerb[method]
+  return verb + resourceName
 }
 
 function layerToPath (layer) {
