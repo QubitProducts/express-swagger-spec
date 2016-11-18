@@ -8,7 +8,7 @@ var methodToOpVerb = {
 function pathToOperationID (path, method) {
   var resourceName = path.replace(':', '').split('/').filter(Boolean).map(w => `${w.charAt(0).toUpperCase()}${w.substr(1)}`).join('')
   if (path === '/') {
-    resourceName = 'index'
+    resourceName = 'Index'
   }
   var verb = methodToOpVerb[method]
   return verb + resourceName
